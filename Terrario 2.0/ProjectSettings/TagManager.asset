@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - blocks
+  - terrain
+  - bullet
   layers:
   - Default
   - TransparentFX
@@ -11,10 +14,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - players
+  - terrain
+  - collideObjects
+  - climbing
   - 
   - 
   - 
@@ -38,6 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 382276777
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: game
+    uniqueID: 2343927207
     locked: 0
