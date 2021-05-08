@@ -16,7 +16,7 @@ public class bulletscript : MonoBehaviour
 
     private IEnumerator kill()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
     
