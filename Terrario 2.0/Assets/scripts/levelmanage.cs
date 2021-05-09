@@ -16,6 +16,10 @@ public class levelmanage : MonoBehaviour
     public int currency = 0;
     public Text currencyUI;
 
+    [Header("cherries")]
+    public int cherry = 0;
+    public Text cherryUI;
+
 
     private void Awake()
     {
@@ -32,5 +36,12 @@ public class levelmanage : MonoBehaviour
     {
         currency += amount;
         currencyUI.text = "$" + currency;
+    }
+
+
+    public void IncreaseCherry(int cherryamount)
+    {
+        cherry += cherryamount;
+        cherryUI.text =  "" + cherry;
     }
 }

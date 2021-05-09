@@ -10,6 +10,7 @@ TagManager:
   - enemy
   - currency
   - destructable
+  - cherry
   layers:
   - Default
   - TransparentFX

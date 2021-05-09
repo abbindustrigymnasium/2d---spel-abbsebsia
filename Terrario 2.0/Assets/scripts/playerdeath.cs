@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class playerdeath : MonoBehaviour
 {
 
-    public float playerhealth = 3;
+   
+    public Animator death;
 
     void Update()
     {
-        if (gameObject.transform.position.y < -30)
+       
+        if (gameObject.transform.position.y < -90)
         {
             Destroy(gameObject);
             levelmanage.instance.Respawn();
-            playerhealth--;
+          
+
+
         };
 
     }
+
+  
 
 
 
@@ -24,12 +32,8 @@ public class playerdeath : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("enemy"))
         {
-            
             Destroy(gameObject);
             levelmanage.instance.Respawn();
-            playerhealth--; 
-          
-
         }
 
 
@@ -38,4 +42,6 @@ public class playerdeath : MonoBehaviour
     }
 
     
+
+
 }
