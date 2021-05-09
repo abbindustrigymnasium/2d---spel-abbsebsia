@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class movement : MonoBehaviour {
-    public float movementSpeed;
+
+    public CharacterController2D controller;
+    public float movementSpeed = 10f;
     public Rigidbody2D rb;
+   
 
     public Animator anim;
 
@@ -13,15 +16,23 @@ public class movement : MonoBehaviour {
     public Transform feet;
     public LayerMask groundLayers;
     public LayerMask climbLayers;
-    [HideInInspector] public bool isFacingRight = true;
+    public bool isFacingRight = true;
 
     float mx;
+    public bool crouch = false;
+    public bool jump = false;
     
     private void Update(){
         mx = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded()){
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
             Jump();
+            jump = true;
+        }
+        else
+        {
+            jump = false;
         }
         if (Mathf.Abs(mx) > 0.05f){
             anim.SetBool("IsRunning", true);
@@ -32,40 +43,53 @@ public class movement : MonoBehaviour {
 
         if (mx > 0f)
         {
-            transform.localScale = new Vector3(2f, 2f, 2f);
+            transform.localScale = new Vector3(1f, 1f, 1f);
             isFacingRight = true;
         }
         else if(mx < 0f)
         {
-            transform.localScale = new Vector3(-2f, 2f, 2f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
             isFacingRight = false;
         }
 
-        if (Input.GetMouseButtonDown(0)) { 
-
-            anim.SetBool("IsCrouching", true);
-        } else { 
-            anim.SetBool("IsCrouching", false); 
+        if (Input.GetButtonDown("Vertical"))
+        {
+            movementSpeed = 7;
+            jumpForce = 9;
+            crouch = true;
+            
         }
-
+        else if (Input.GetButtonUp("Vertical"))
+        {
+            movementSpeed = 10 ;
+            jumpForce = 16;
+            crouch = false;
+        }
+        
+            
+       
         anim.SetBool("isGrounded", IsGrounded());
+       
 
 
     }
     private void FixedUpdate(){
         Vector2 movement = new Vector2(mx* movementSpeed, rb.velocity.y);
         rb.velocity = movement;
+
+        controller.Move(mx * Time.fixedDeltaTime, crouch, jump);
     }
-
- 
-
+    
     void Jump(){
         Vector2 movement = new Vector2(rb.velocity.x, jumpForce);
 
         rb.velocity = movement;
     }
 
-   
+   public void onCrouching(bool isCrouching)
+    {
+        anim.SetBool("IsCrouching", isCrouching);
+    }
     
         
     

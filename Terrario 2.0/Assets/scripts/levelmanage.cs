@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Cinemachine;
 
 public class levelmanage : MonoBehaviour
 {
     public static levelmanage instance;
     public GameObject playerPrefab;
     public Transform respawnPoint;
+
+    public CinemachineVirtualCameraBase cam;
+
+    [Header("Currency")]
+    public int currency = 0;
+    public Text currencyUI;
+
 
     private void Awake()
     {
@@ -15,6 +24,13 @@ public class levelmanage : MonoBehaviour
 
     public void Respawn()
     {
-        Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
+        GameObject player = Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
+        cam.Follow = player.transform;
+    }
+
+    public void IncreaseCurrency(int amount)
+    {
+        currency += amount;
+        currencyUI.text = "$" + currency;
     }
 }

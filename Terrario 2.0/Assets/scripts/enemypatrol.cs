@@ -10,7 +10,7 @@ public class enemypatrol : MonoBehaviour
 
     public Transform groundCheck;
 
-    bool isFacingRight = true;
+    bool isFacingRights = true;
 
     RaycastHit2D hit;
 
@@ -23,7 +23,7 @@ public class enemypatrol : MonoBehaviour
     {
         if(hit.collider != false)
         {
-            if (isFacingRight)
+            if (isFacingRights)
             {
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
             }
@@ -34,7 +34,7 @@ public class enemypatrol : MonoBehaviour
         }
         else
         {
-            isFacingRight = !isFacingRight;
+            isFacingRights = !isFacingRights;
             transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
         }
     }

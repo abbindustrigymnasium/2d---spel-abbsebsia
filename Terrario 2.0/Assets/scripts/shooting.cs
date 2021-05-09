@@ -7,6 +7,7 @@ public class shooting : MonoBehaviour
     public float fireRate = 0.2f;
     public Transform firingPoint;
     public GameObject bulletPrefab;
+    public float bulletcount = 5;
 
     float timeUntilFire;
     movement pm;
@@ -18,10 +19,12 @@ public class shooting : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && timeUntilFire< Time.time)
+        if(Input.GetMouseButtonDown(0) && timeUntilFire< Time.time && bulletcount>0)
         {
+         
             shoot();
             timeUntilFire = Time.time + fireRate;
+            bulletcount--;
         }
     }
 

@@ -8,6 +8,8 @@ TagManager:
   - terrain
   - bullet
   - enemy
+  - currency
+  - destructable
   layers:
   - Default
   - TransparentFX
