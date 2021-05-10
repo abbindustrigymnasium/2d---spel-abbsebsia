@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using TMPro;
 
 public class levelmanage : MonoBehaviour
 {
@@ -14,11 +15,9 @@ public class levelmanage : MonoBehaviour
 
     [Header("Currency")]
     public int currency = 0;
-    public Text currencyUI;
+    public TextMeshProUGUI currencyUI;
 
-    [Header("cherries")]
-    public int cherry = 0;
-    public Text cherryUI;
+   
 
 
     private void Awake()
@@ -39,9 +38,5 @@ public class levelmanage : MonoBehaviour
     }
 
 
-    public void IncreaseCherry(int cherryamount)
-    {
-        cherry += cherryamount;
-        cherryUI.text =  "" + cherry;
-    }
+    
 }

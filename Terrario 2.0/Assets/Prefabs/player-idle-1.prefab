@@ -196,9 +196,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.65}
+  m_Offset: {x: -0.06508136, y: -0.57252204}
   serializedVersion: 2
-  m_Radius: 0.41559505
+  m_Radius: 0.5085684
 --- !u!61 &4796810249987173143
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472fa68e2100ded4396f70a0ad679092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerhealth: 3
+  death: {fileID: 0}
 --- !u!114 &4796810249987173130
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class cherrypickup : MonoBehaviour
 {
-    public int cherryamounts = 1;
+    public int cherryamount = 1;
+    public HealthBar healthbars;
+   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             Destroy(gameObject);
-            levelmanage.instance.IncreaseCherry(cherryamounts);
+            healthbars.Increasehealth(cherryamount);
         }
     }
+
+
+    
 }
